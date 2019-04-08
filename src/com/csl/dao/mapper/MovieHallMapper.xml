@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csl.dao.MovieHallDao">
+    <!-- 配置(映射文件)Mapper -->
+	<resultMap type="MovieHall" id="MovieHallDao">
+		<id property="h_id" column="h_id"/>
+		<result property="h_number" column="h_number"/>
+		<result property="h_name" column="h_name"/>
+		<result property="h_cncnumber" column="h_cncnumber"/>
+		<result property="seat" column="seat"/>
+		<result property="duration" column="duration"/>
+		<result property="comment" column="comment"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	
+   <!-- 注册-->
+   <insert id="insertHall" parameterType="MovieHall">
+   		<selectKey keyProperty="id" order="AFTER" resultType="int">
+   		    select last_insert_id()
+   		</selectKey>
+   		insert into movie_hall(h_number,h_name,h_cncnumber,seat,duration,comment,status) values(#{h_number},
+   		#{h_name},#{h_cncnumber},#{seat},#{duration},#{comment},#{status})
+   </insert>
+    <!--查询-->
+    <select id="searchHallById" resultType="MovieHall" parameterType="java.lang.Integer">
+        select * from movie_hall where h_id = #{h_id}
+    </select>
+    <select id="searchHalls" resultType="MovieHall">
+        select * from movie_hall
+    </select>
+    <!-- 修改 -->
+    <update id="updateHall" parameterType="MovieHall">
+    	update movie_hall set h_number= #{h_number},h_name= #{h_name},h_cncnumber= #{h_cncnumber},
+    	seat= #{seat},duration= #{duration},comment= #{comment},
+    	status= #{status} where h_id=#{h_id}
+    </update>
+    <!-- 删除 -->
+    <delete id="deleteHallById" parameterType="java.lang.Integer">
+    	delete from movie_hall where h_id=#{h_id} 
+    </delete>
+</mapper>
