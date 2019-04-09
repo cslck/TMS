@@ -15,12 +15,12 @@ import com.csl.pojo.AudioFrequency;
 import com.csl.pojo.MediaBlock;
 import com.csl.pojo.MovieHall;
 import com.csl.pojo.Projector;
-import com.csl.pojo.Video;
+import com.csl.pojo.VideoSurveillance;
 import com.csl.service.AudioFrequencyService;
 import com.csl.service.MediaBlockService;
 import com.csl.service.MovieHallService;
 import com.csl.service.ProjectorService;
-import com.csl.service.VideoService;
+import com.csl.service.VideoSurveillanceService;
 
 @Controller
 public class TheaterConfigurationController {
@@ -35,7 +35,7 @@ public class TheaterConfigurationController {
 	private ProjectorService projectorService;
 	
 	@Autowired
-	private VideoService videoService;
+	private VideoSurveillanceService videoService;
 	
 	@Autowired
 	private MovieHallService movieHallService;
@@ -49,7 +49,7 @@ public class TheaterConfigurationController {
 			int ids = mh.get(0).getH_id();
 			Projector pj = projectorService.queryProjectorByHid(ids);
 			MediaBlock mb = mediaBlockService.queryMediaBlockByHid(ids);
-			Video vd = videoService.queryVideoByHid(ids);
+			VideoSurveillance vd = videoService.queryVideoByHid(ids);
 			AudioFrequency af = audioFrequencyService.queryAudioFrequencyByHid(ids);
 			data.put("pj", pj);
 			data.put("mb", mb);
@@ -72,7 +72,7 @@ public class TheaterConfigurationController {
 		try {
 			Projector pj = projectorService.queryProjectorByHid(id);
 			MediaBlock mb = mediaBlockService.queryMediaBlockByHid(id);
-			Video video = videoService.queryVideoByHid(id);
+			VideoSurveillance video = videoService.queryVideoByHid(id);
 			AudioFrequency af = audioFrequencyService.queryAudioFrequencyByHid(id);
 			data.put("pj", pj);
 			data.put("mb", mb);
@@ -273,7 +273,7 @@ public class TheaterConfigurationController {
 	public AjaxResult queryVideo(HttpServletRequest req,int id) {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
-			Video vi = videoService.queryVideoById(id);
+			VideoSurveillance vi = videoService.queryVideoById(id);
 			data.put("vi", vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
@@ -285,7 +285,7 @@ public class TheaterConfigurationController {
 	}
 	@RequestMapping("/addVideo")//添加视频
 	@ResponseBody
-	public AjaxResult addVideo(HttpServletRequest req,int id,Video vi) {
+	public AjaxResult addVideo(HttpServletRequest req,int id,VideoSurveillance vi) {
 		try {
 			videoService.addMediaBlock(vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -298,7 +298,7 @@ public class TheaterConfigurationController {
 	}
 	@RequestMapping("/updateVideo")//更新视频信息
 	@ResponseBody
-	public AjaxResult updateVideo(HttpServletRequest req,Video vi) {
+	public AjaxResult updateVideo(HttpServletRequest req,VideoSurveillance vi) {
 		try {
 			videoService.updateVideo(vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
