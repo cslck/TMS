@@ -6,31 +6,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hw.dao.VideoDao;
-import com.hw.pojo.Video;
-import com.hw.service.VideoService;
+import com.hw.dao.VideoSurveillanceDao;
+import com.hw.pojo.VideoSurveillance;
+import com.hw.service.VideoSurveillanceService;
 @Service
 @Transactional
-public class VideoServiceImpl implements VideoService {
+public class VideoSurveillanceServiceImpl implements VideoSurveillanceService {
 
 	@Autowired
-	private VideoDao videoDao;
-	public void addMediaBlock(Video video) {
+	private VideoSurveillanceDao videoDao;
+	public void addMediaBlock(VideoSurveillance video) {
 		// TODO Auto-generated method stub
 		videoDao.insertMediaBlock(video);
 	}
 
-	public List<Video> queryVideos() {
+	public List<VideoSurveillance> queryVideos() {
 		// TODO Auto-generated method stub
 		return videoDao.searchVideos();
 	}
 
-	public Video queryVideoById(int id) {
+	public VideoSurveillance queryVideoById(int id) {
 		// TODO Auto-generated method stub
 		return videoDao.searchVideoById(id);
 	}
 
-	public void updateVideo(Video video) {
+	public void updateVideo(VideoSurveillance video) {
 		// TODO Auto-generated method stub
 		videoDao.updateVideo(video);
 	}
@@ -40,7 +40,7 @@ public class VideoServiceImpl implements VideoService {
 		videoDao.deleteVideoById(id);
 	}
 
-	public Video queryVideoByHid(int id) {
+	public VideoSurveillance queryVideoByHid(int id) {
 		// TODO Auto-generated method stub
 		return videoDao.searchVideoByHid(id);
 	}

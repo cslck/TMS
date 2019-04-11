@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.csl.dao.AudioFrequencyDao;
-import com.csl.pojo.AudioFrequency;
-import com.csl.service.AudioFrequencyService;
+import com.hw.dao.AudioFrequencyDao;
+import com.hw.pojo.AudioFrequency;
+import com.hw.service.AudioFrequencyService;
 @Service
 @Transactional
 public class AudioFrequencyServiceImpl implements AudioFrequencyService {

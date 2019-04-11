@@ -1,6 +1,6 @@
 package com.hw.pojo;
 
-public class Video {
+public class VideoSurveillance {
 	//IP视频输入信息
 	private int v_id;
 	private String v_url;//URL
@@ -8,11 +8,11 @@ public class Video {
 	private String v_password;//密码
 	private int h_id;//影厅id
 	private String status;
-	public Video() {
+	public VideoSurveillance() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Video(int v_id, String v_url, String v_account, String v_password, int h_id, String status) {
+	public VideoSurveillance(int v_id, String v_url, String v_account, String v_password, int h_id, String status) {
 		super();
 		this.v_id = v_id;
 		this.v_url = v_url;

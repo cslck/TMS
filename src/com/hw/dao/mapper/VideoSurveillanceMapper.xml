@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hw.dao.VideoDao">
+<mapper namespace="com.csl.dao.VideoSurveillanceDao">
     <!-- 配置(映射文件)Mapper -->
-	<resultMap type="Video" id="VideoDao">
+	<resultMap type="VideoSurveillance" id="VideoSurveillanceDao">
 		<id property="v_id" column="v_id"/>
 		<result property="v_url" column="v_url"/>
 		<result property="v_account" column="v_account"/>
@@ -14,30 +14,30 @@
 	</resultMap>
 	
    <!-- 注册-->
-   <insert id="insertVideo" parameterType="Video">
+   <insert id="insertVideo" parameterType="VideoSurveillance">
    		<selectKey keyProperty="id" order="AFTER" resultType="int">
    		    select last_insert_id()
    		</selectKey>
-   		insert into video(v_url,v_account,v_password,h_id,status) values(
+   		insert into video_surveillance(v_url,v_account,v_password,h_id,status) values(
    		#{v_url},#{v_account},#{v_password},#{h_id},#{status})
    </insert>
     <!--查询-->
-    <select id="searchVideoById" resultType="Video" parameterType="java.lang.Integer">
-        select * from video where v_id = #{v_id}
+    <select id="searchVideoById" resultType="VideoSurveillance" parameterType="java.lang.Integer">
+        select * from video_surveillance where v_id = #{v_id}
     </select>
-     <select id="searchVideoByHid" resultType="Video" parameterType="java.lang.Integer">
-        select * from video where h_id = #{h_id}
+     <select id="searchVideoByHid" resultType="VideoSurveillance" parameterType="java.lang.Integer">
+        select * from video_surveillance where h_id = #{h_id}
     </select>
-    <select id="searchVideos" resultType="Video">
-        select * from video
+    <select id="searchVideos" resultType="VideoSurveillance">
+        select * from video_surveillance
     </select>
     <!-- 修改 -->
-    <update id="updateVideo" parameterType="Video">
-    	update video set v_url= #{v_url},v_account= #{v_account},
+    <update id="updateVideo" parameterType="VideoSurveillance">
+    	update video_surveillance set v_url= #{v_url},v_account= #{v_account},
     	v_password= #{v_password},h_id= #{h_id},status= #{status} where v_id=#{v_id}
     </update>
     <!-- 删除 -->
     <delete id="deleteVideoById" parameterType="java.lang.Integer">
-    	delete from video where v_id=#{v_id} 
+    	delete from video_surveillance where v_id=#{v_id} 
     </delete>
 </mapper>
