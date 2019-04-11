@@ -13,7 +13,6 @@ import com.hw.pojo.MovieHall;
 import com.hw.service.MovieHallService;
 
 @Controller
-@RequestMapping("/hw")
 public class MovieHallController {
 
 	@Autowired

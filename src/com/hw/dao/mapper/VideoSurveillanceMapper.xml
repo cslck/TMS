@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csl.dao.VideoSurveillanceDao">
+<mapper namespace="com.hw.dao.VideoSurveillanceDao">
     <!-- 配置(映射文件)Mapper -->
 	<resultMap type="VideoSurveillance" id="VideoSurveillanceDao">
 		<id property="v_id" column="v_id"/>

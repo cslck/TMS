@@ -35,20 +35,6 @@ public class CentralStorageController {
 		}
 		
 	}
-	/*
-	 * @RequestMapping("/allCSToString")//所有信息
-	@ResponseBody
-	public String allCentralStoragesString(HttpServletRequest req) {
-		try {
-			List<CentralStorage> cs = centralStorageService.queryCentralStorages();
-			return cs.toString();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return "false";
-		}
-		
-	}*/
 	/*@RequestMapping("/allCSAjax")//所有信息
 	@ResponseBody
 	public AjaxResult allCentralStoragesAjax(HttpServletRequest req) {
