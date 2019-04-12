@@ -31,7 +31,7 @@ public class CentralStorageServiceImpl implements CentralStorageService {
 		return centralStorageDao.searchCentralStorageById(id);
 	}
 
-	public void updateAudioFrequency(CentralStorage cs) {
+	public void updateCentralStorage(CentralStorage cs) {
 		// TODO Auto-generated method stub
 		centralStorageDao.updateCentralStorage(cs);
 	}

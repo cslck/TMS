@@ -33,7 +33,7 @@
         select * from central_storage
     </select>
     <!-- 修改 -->
-    <update id="updateAudioFrequency" parameterType="CentralStorage">
+    <update id="updateCentralStorage" parameterType="CentralStorage">
     	update central_storage set cs_name= #{cs_name},mtas= #{mtas},myad= #{myad},
     	cs_account= #{cs_account},cs_password= #{cs_password},cs_url= #{cs_url},
     	cs_interface= #{cs_interface},uft= #{uft},status= #{status} where cs_id=#{cs_id}

@@ -12,7 +12,7 @@ public interface CentralStorageService {
 	
 	CentralStorage queryCentralStorageById(int id);//id查询
 	
-	void updateAudioFrequency(CentralStorage cs);//信息更新
+	void updateCentralStorage(CentralStorage cs);//信息更新
 	
 	void deleteCentralStorageById(int id);//id删除
 }

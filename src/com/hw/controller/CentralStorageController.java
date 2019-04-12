@@ -67,9 +67,10 @@ public class CentralStorageController {
 	}
 	@RequestMapping("/queryCS")//ID查询
 	@ResponseBody
-	public CentralStorage queryCentralStorage(HttpServletRequest req,int id) {
+	public CentralStorage queryCentralStorage(HttpServletRequest req,Integer cs_id) {
+		System.out.println(cs_id+"+++00000000000000000000000000000000000000000");
 		try {
-			CentralStorage cs = centralStorageService.queryCentralStorageById(id);
+			CentralStorage cs = centralStorageService.queryCentralStorageById(cs_id);
 			return cs;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -98,7 +99,7 @@ public class CentralStorageController {
 	@ResponseBody
 	public String updateCentralStorage(HttpServletRequest req,CentralStorage cs) {
 		try {
-			centralStorageService.updateAudioFrequency(cs);
+			centralStorageService.updateCentralStorage(cs);
 			return "okay";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -109,9 +110,9 @@ public class CentralStorageController {
 	}
 	@RequestMapping("/dropCS")//ID删除
 	@ResponseBody
-	public String dropCentralStorage(HttpServletRequest req,int id) {
+	public String dropCentralStorage(HttpServletRequest req,Integer cs_id) {
 		try {
-			centralStorageService.deleteCentralStorageById(id);
+			centralStorageService.deleteCentralStorageById(cs_id);
 			return "okay";
 		} catch (Exception e) {
 			// TODO: handle exception

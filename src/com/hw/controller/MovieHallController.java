@@ -47,9 +47,9 @@ public class MovieHallController {
 	}
 	@RequestMapping("/queryHall")//查询影厅ID
 	@ResponseBody
-	public MovieHall queryMovieHall(HttpServletRequest req,int id) {
+	public MovieHall queryMovieHall(HttpServletRequest req,Integer h_id) {
 		try {
-			MovieHall mh = movieHallService.queryHallById(id);
+			MovieHall mh = movieHallService.queryHallById(h_id);
 			return mh;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -73,9 +73,9 @@ public class MovieHallController {
 	}
 	@RequestMapping("/dropHall")//删除影厅ID
 	@ResponseBody
-	public String dropMovieHall(HttpServletRequest req,int id) {
+	public String dropMovieHall(HttpServletRequest req,Integer h_id) {
 		try {
-			movieHallService.deleteHallById(id);
+			movieHallService.deleteHallById(h_id);
 			return "okay";
 		} catch (Exception e) {
 			// TODO: handle exception
