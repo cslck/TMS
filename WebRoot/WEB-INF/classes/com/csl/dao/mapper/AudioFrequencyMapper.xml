@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csl.dao.AudioFrequencyDao">
+    <!-- 配置(映射文件)Mapper -->
+	<resultMap type="AudioFrequency" id="AudioFrequencyDao">
+		<id property="af_id" column="af_id"/>
+		<result property="af_name" column="af_name"/>
+		<result property="af_type" column="af_type"/>
+		<result property="af_account" column="af_account"/>
+		<result property="af_password" column="af_password"/>
+		<result property="af_url" column="af_url"/>
+		<result property="af_interface" column="af_interface"/>
+		<result property="h_id" column="h_id"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	
+   <!-- 注册-->
+   <insert id="insertAudioFrequency" parameterType="AudioFrequency">
+   		<selectKey keyProperty="id" order="AFTER" resultType="int">
+   		    select last_insert_id()
+   		</selectKey>
+   		insert into audio_frequency(af_name,af_type,af_account,af_password,af_url,af_interface,h_id,status) values(#{af_name},
+   		#{af_type},#{af_account},#{af_password},#{af_url},#{af_interface},#{h_id},#{status})
+   </insert>
+    <!--查询-->
+    <select id="searchAudioFrequencyById" resultType="AudioFrequency" parameterType="java.lang.Integer">
+        select * from audio_frequency where af_id = #{af_id}
+    </select>
+    <select id="searchAudioFrequencyByHid" resultType="AudioFrequency" parameterType="java.lang.Integer">
+        select * from audio_frequency where h_id = #{h_id}
+    </select>
+    <select id="searchAudioFrequencys" resultType="AudioFrequency">
+        select * from audio_frequency
+    </select>
+    <!-- 修改 -->
+    <update id="updateAudioFrequency" parameterType="AudioFrequency">
+    	update audio_frequency set af_name= #{af_name},af_type= #{af_type},af_account= #{af_account},
+    	af_password= #{af_password},af_url= #{af_url},af_interface= #{af_interface},
+    	h_id= #{h_id},status= #{status} where af_id=#{af_id}
+    </update>
+    <!-- 删除 -->
+    <delete id="deleteAudioFrequencyById" parameterType="java.lang.Integer">
+    	delete from audio_frequency where af_id=#{af_id} 
+    </delete>
+</mapper>

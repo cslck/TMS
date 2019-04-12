@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csl.dao.CentralStorageDao">
+    <!-- 配置(映射文件)Mapper -->
+	<resultMap type="CentralStorage" id="CentralStorageDao">
+		<id property="cs_id" column="cs_id"/>
+		<result property="cs_name" column="cs_name"/>
+		<result property="mtas" column="mtas"/>
+		<result property="myad" column="myad"/>
+		<result property="cs_account" column="cs_account"/>
+		<result property="cs_password" column="cs_password"/>
+		<result property="cs_url" column="cs_url"/>
+		<result property="cs_interface" column="cs_interface"/>
+		<result property="uft" column="uft"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	
+   <!-- 注册-->
+   <insert id="insertCentralStorage" parameterType="CentralStorage">
+   		<selectKey keyProperty="id" order="AFTER" resultType="int">
+   		    select last_insert_id()
+   		</selectKey>
+   		insert into central_storage(cs_name,mtas,myad,cs_account,cs_password,cs_url,cs_interface,uft,status) values(#{cs_name},
+   		#{mtas},#{myad},#{cs_account},#{cs_password},#{cs_url},#{cs_interface},#{uft},#{status})
+   </insert>
+    <!--查询-->
+    <select id="searchCentralStorageById" resultType="CentralStorage" parameterType="java.lang.Integer">
+        select * from central_storage where cs_id = #{cs_id}
+    </select>
+    <select id="searchCentralStorages" resultType="CentralStorage">
+        select * from central_storage
+    </select>
+    <!-- 修改 -->
+    <update id="updateAudioFrequency" parameterType="CentralStorage">
+    	update central_storage set cs_name= #{cs_name},mtas= #{mtas},myad= #{myad},
+    	cs_account= #{cs_account},cs_password= #{cs_password},cs_url= #{cs_url},
+    	cs_interface= #{cs_interface},uft= #{uft},status= #{status} where cs_id=#{cs_id}
+    </update>
+    <!-- 删除 -->
+    <delete id="deleteCentralStorageById" parameterType="java.lang.Integer">
+    	delete from central_storage where cs_id=#{cs_id} 
+    </delete>
+</mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csl.dao.MediaBlockDao">
+    <!-- 配置(映射文件)Mapper -->
+	<resultMap type="MediaBlock" id="MediaBlockDao">
+		<id property="mb_id" column="mb_id"/>
+		<result property="mb_name" column="mb_name"/>
+		<result property="mb_type" column="mb_type"/>
+		<result property="mb_sequence" column="mb_sequence"/>
+		<result property="mtas" column="mtas"/>
+		<result property="myad" column="myad"/>
+		<result property="management_account" column="management_account"/>
+		<result property="management_password" column="management_password"/>
+		<result property="management_url" column="management_url"/>
+		<result property="management_interface" column="management_interface"/>
+		<result property="file_account" column="file_account"/>
+		<result property="file_password" column="file_password"/>
+		<result property="file_url" column="file_url"/>
+		<result property="file_interface" column="file_interface"/>
+		<result property="h_id" column="h_id"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+    	mb_id,mb_name,mb_type,mb_sequence,mtas,myad,management_account,
+    	management_password,management_url,management_interface,file_account,
+    	file_password,file_url,file_interface,h_id,status
+  	</sql>
+   <!-- 注册-->
+   <insert id="insertMediaBlock" parameterType="MediaBlock">
+   		<selectKey keyProperty="id" order="AFTER" resultType="int">
+   		    select last_insert_id()
+   		</selectKey>
+   		insert into media_block(mb_name,mb_type,
+   			mb_sequence,mtas,myad,
+   			management_account,
+   			management_password,
+   			management_url,
+   			management_interface,
+   			file_account,
+   			file_password,
+   			file_url,
+   			file_interface,
+   			h_id,status)
+   		 values(#{mb_name},#{mb_type},
+   		 	#{mb_sequence},#{mtas},#{myad},
+   		 	#{management_account},
+   		 	#{management_password},
+   		 	#{management_url},
+   		 	#{management_interface},
+   		 	#{file_account},
+   		 	#{file_password},
+   		 	#{file_url},
+   		 	#{file_interface},
+   		 	#{h_id},#{status})
+   </insert>
+    <!--查询-->
+    <select id="searchMediaBlockById" resultType="MediaBlock" parameterType="java.lang.Integer">
+        select 
+        <include refid="Base_Column_List" />
+        from media_block
+        where mb_id = #{mb_id}
+    </select>
+    <select id="searchMediaBlockByHid" resultType="MediaBlock" parameterType="java.lang.Integer">
+        select 
+        <include refid="Base_Column_List" />
+        from media_block
+        where h_id = #{h_id}
+    </select>
+    <select id="searchMediaBlocks" resultType="MediaBlock">
+        select 
+         <include refid="Base_Column_List" />
+        from media_block
+    </select>
+    <!-- 修改 -->
+    <update id="updateMediaBlock" parameterType="MediaBlock">
+    	update media_block set 
+    		mb_name= #{mb_name},
+    		mb_type= #{mb_type},
+    		mb_sequence= #{mb_sequence},
+    		mtas= #{mtas},
+    		myad= #{myad},
+    		management_account= #{management_account},
+    		management_password= #{management_password},
+    		management_url= #{management_url},
+    		management_interface= #{management_interface},
+    		file_account= #{file_account},
+    		file_password= #{file_password},
+    		file_url= #{file_url},
+    		file_interface= #{file_interface},
+    		h_id= #{h_id},
+    		status= #{status}
+    	where mb_id=#{mb_id}
+    </update>
+    <!-- 删除 -->
+    <delete id="deleteMediaBlockById" parameterType="java.lang.Integer">
+    	delete from media_block where mb_id=#{mb_id} 
+    </delete>
+</mapper>
