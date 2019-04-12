@@ -74,6 +74,12 @@ public class Projector {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "Projector [p_id=" + p_id + ", p_name=" + p_name + ", p_account=" + p_account + ", p_password="
+				+ p_password + ", p_url=" + p_url + ", p_interface=" + p_interface + ", h_id=" + h_id + ", status="
+				+ status + "]";
+	}
 	
 	
 }

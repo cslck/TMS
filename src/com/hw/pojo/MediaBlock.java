@@ -140,6 +140,15 @@ public class MediaBlock {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "MediaBlock [mb_id=" + mb_id + ", mb_name=" + mb_name + ", mb_type=" + mb_type + ", mb_sequence="
+				+ mb_sequence + ", mtas=" + mtas + ", myad=" + myad + ", management_account=" + management_account
+				+ ", management_password=" + management_password + ", management_url=" + management_url
+				+ ", management_interface=" + management_interface + ", file_account=" + file_account
+				+ ", file_password=" + file_password + ", file_url=" + file_url + ", file_interface=" + file_interface
+				+ ", h_id=" + h_id + ", status=" + status + "]";
+	}
 	
 	
 }

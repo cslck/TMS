@@ -90,6 +90,12 @@ public class CentralStorage {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "CentralStorage [cs_id=" + cs_id + ", cs_name=" + cs_name + ", mtas=" + mtas + ", myad=" + myad
+				+ ", cs_account=" + cs_account + ", cs_password=" + cs_password + ", cs_url=" + cs_url
+				+ ", cs_interface=" + cs_interface + ", uft=" + uft + ", status=" + status + "]";
+	}
 	
 	
 }

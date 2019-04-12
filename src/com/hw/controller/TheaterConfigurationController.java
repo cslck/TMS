@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ import com.hw.service.ProjectorService;
 import com.hw.service.VideoSurveillanceService;
 @Controller
 public class TheaterConfigurationController {
+	
+	protected final Log logger = LogFactory.getLog(this.getClass());
 
 	@Autowired
 	private AudioFrequencyService audioFrequencyService;
@@ -64,7 +68,7 @@ public class TheaterConfigurationController {
 		
 	}
 	
-	@RequestMapping("/queryHallInfo")//所有影厅信息
+	@RequestMapping("/queryHallInfo")//影厅配置信息
 	@ResponseBody
 	public AjaxResult allCentralStoragesAjax(HttpServletRequest req,Integer h_id) {
 		HashMap<String, Object> data = new HashMap<String, Object>();
@@ -77,6 +81,7 @@ public class TheaterConfigurationController {
 			data.put("mb", mb);
 			data.put("video", video);
 			data.put("af", af);
+			logger.info("用户：admin,操作：影厅ID查询所有影厅配置信息"+data);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -95,6 +100,7 @@ public class TheaterConfigurationController {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			Projector pj = projectorService.queryProjectorById(p_id);
+			logger.info("用户：admin,操作：ID查询放映机信息"+pj);
 			data.put("pj", pj);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
@@ -108,6 +114,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/addProjector")//添加放映机
 	@ResponseBody
 	public AjaxResult addProjector(HttpServletRequest req,Projector pro) {
+		logger.info("用户：admin,操作：添加放映机信息"+pro);
 		try {
 			/*Projector pj = new Projector();
 			pj.setP_id(pro.getP_id());
@@ -126,6 +133,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/updateProjector")//更新放映机信息
 	@ResponseBody
 	public AjaxResult updateProjector(HttpServletRequest req,Projector pro) {
+		logger.info("用户：admin,操作：更新放映机信息"+pro);
 		try {
 			projectorService.updateProjector(pro);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -139,6 +147,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/delProjector")//删除放映机
 	@ResponseBody
 	public AjaxResult delProjector(HttpServletRequest req,Integer p_id) {
+		logger.info("用户：admin,操作：ID删除放映机信息"+p_id);
 		try {
 			projectorService.dropProjectorById(p_id);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -159,6 +168,7 @@ public class TheaterConfigurationController {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			MediaBlock mb = mediaBlockService.queryMediaBlockById(mb_id);
+			logger.info("用户：admin,操作：ID查询媒体块信息"+mb);
 			data.put("mb", mb);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
@@ -171,6 +181,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/addMB")//添加媒体块
 	@ResponseBody
 	public AjaxResult addMB(HttpServletRequest req,MediaBlock mb) {
+		logger.info("用户：admin,操作：添加媒体块"+mb);
 		try {
 			mediaBlockService.addMediaBlock(mb);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -184,6 +195,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/updateMB")//更新媒体块信息
 	@ResponseBody
 	public AjaxResult updateMB(HttpServletRequest req,MediaBlock mb) {
+		logger.info("用户：admin,操作：更新媒体块信息"+mb);
 		try {
 			mediaBlockService.updateMediaBlock(mb);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -197,6 +209,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/delMB")//删除媒体块
 	@ResponseBody
 	public AjaxResult delMB(HttpServletRequest req,Integer mb_id) {
+		logger.info("用户：admin,操作：ID删除媒体块信息"+mb_id);
 		try {
 			mediaBlockService.dropMediaBlockById(mb_id);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -217,6 +230,7 @@ public class TheaterConfigurationController {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			AudioFrequency af = audioFrequencyService.queryAudioFrequencyById(af_id);
+			logger.info("用户：admin,操作：ID查询音频信息"+af_id);
 			data.put("af", af);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
@@ -229,6 +243,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/addAF")//添加音频
 	@ResponseBody
 	public AjaxResult addAF(HttpServletRequest req,AudioFrequency af) {
+		logger.info("用户：admin,操作：添加音频信息"+af);
 		try {
 			audioFrequencyService.addAudioFrequency(af);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -242,6 +257,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/updateAF")//更新音频信息
 	@ResponseBody
 	public AjaxResult updateAF(HttpServletRequest req,AudioFrequency af) {
+		logger.info("用户：admin,操作：更新音频信息"+af);
 		try {
 			audioFrequencyService.updateAudioFrequency(af);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -255,6 +271,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/delAF")//删除音频
 	@ResponseBody
 	public AjaxResult delAF(HttpServletRequest req,Integer af_id) {
+		logger.info("用户：admin,操作：ID删除音频信息"+af_id);
 		try {
 			audioFrequencyService.dropAudioFrequencyById(af_id);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -274,6 +291,7 @@ public class TheaterConfigurationController {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			VideoSurveillance vi = videoService.queryVideoById(v_id);
+			logger.info("用户：admin,操作：ID查询视频监控信息"+vi);
 			data.put("vi", vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
@@ -286,6 +304,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/addVideo")//添加视频
 	@ResponseBody
 	public AjaxResult addVideo(HttpServletRequest req,VideoSurveillance vi) {
+		logger.info("用户：admin,操作：添加视频信息"+vi);
 		try {
 			videoService.addMediaBlock(vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -299,6 +318,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/updateVideo")//更新视频信息
 	@ResponseBody
 	public AjaxResult updateVideo(HttpServletRequest req,VideoSurveillance vi) {
+		logger.info("用户：admin,操作：更新视频"+vi);
 		try {
 			videoService.updateVideo(vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
@@ -312,6 +332,7 @@ public class TheaterConfigurationController {
 	@RequestMapping("/delVideo")//删除视频
 	@ResponseBody
 	public AjaxResult delVideo(HttpServletRequest req,Integer v_id) {
+		logger.info("用户：admin,操作：ID删除监控视频信息"+v_id);
 		try {
 			videoService.dropVideoById(v_id);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
