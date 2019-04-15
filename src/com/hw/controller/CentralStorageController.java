@@ -113,7 +113,7 @@ public class CentralStorageController {
 	@RequestMapping("/dropCS")//ID删除
 	@ResponseBody
 	public String dropCentralStorage(HttpServletRequest req,Integer cs_id) {
-		logger.info("用户：admin,操作：ID查询所有中央存储信息"+cs_id);
+		logger.info("用户：admin,操作：ID删除中央存储信息"+cs_id);
 		try {
 			centralStorageService.deleteCentralStorageById(cs_id);
 			return "okay";
