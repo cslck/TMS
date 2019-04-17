@@ -4,6 +4,7 @@ public class Projector {
 	//放映机信息
 	private int p_id;
 	private String p_name;
+	private String p_type;//类型
 	private String p_account;//登录账户
 	private String p_password;//密码
 	private String p_url;//URL
@@ -14,11 +15,12 @@ public class Projector {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Projector(int p_id, String p_name, String p_account, String p_password, String p_url, String p_interface,
+	public Projector(int p_id, String p_name, String p_type, String p_account, String p_password, String p_url, String p_interface,
 			int h_id, String status) {
 		super();
 		this.p_id = p_id;
 		this.p_name = p_name;
+		this.p_type = p_type;
 		this.p_account = p_account;
 		this.p_password = p_password;
 		this.p_url = p_url;
@@ -37,6 +39,12 @@ public class Projector {
 	}
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
+	}
+	public String getP_type() {
+		return p_type;
+	}
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
 	}
 	public String getP_account() {
 		return p_account;
@@ -76,10 +84,9 @@ public class Projector {
 	}
 	@Override
 	public String toString() {
-		return "Projector [p_id=" + p_id + ", p_name=" + p_name + ", p_account=" + p_account + ", p_password="
-				+ p_password + ", p_url=" + p_url + ", p_interface=" + p_interface + ", h_id=" + h_id + ", status="
-				+ status + "]";
+		return "Projector [p_id=" + p_id + ", p_name=" + p_name + ", p_type=" + p_type + ", p_account=" + p_account
+				+ ", p_password=" + p_password + ", p_url=" + p_url + ", p_interface=" + p_interface + ", h_id=" + h_id
+				+ ", status=" + status + "]";
 	}
-	
 	
 }

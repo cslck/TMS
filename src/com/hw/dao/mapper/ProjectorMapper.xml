@@ -7,6 +7,7 @@
 	<resultMap type="Projector" id="ProjectorDao">
 		<id property="p_id" column="p_id"/>
 		<result property="p_name" column="p_name"/>
+		<result property="p_type" column="p_type"/>
 		<result property="p_account" column="p_account"/>
 		<result property="p_password" column="p_password"/>
 		<result property="p_url" column="p_url"/>
@@ -20,8 +21,22 @@
    		<selectKey keyProperty="id" order="AFTER" resultType="int">
    		    select last_insert_id()
    		</selectKey>
-   		insert into projector(p_name,p_account,p_password,p_url,p_interface,h_id,status) values(#{p_name},
-   		#{p_account},#{p_password},#{p_url},#{p_interface},#{h_id},#{status})
+   		insert into projector(p_name,
+	   		p_type,
+	   		p_account,
+	   		p_password,
+	   		p_url,
+	   		p_interface,
+	   		h_id,
+	   		status) 
+   		values(#{p_name},
+	   		#{p_type},
+	   		#{p_account},
+	   		#{p_password},
+	   		#{p_url},
+	   		#{p_interface},
+	   		#{h_id},
+	   		#{status})
    </insert>
     <!--查询-->
     <select id="searchProjectorById" resultType="Projector" parameterType="java.lang.Integer">
@@ -35,9 +50,16 @@
     </select>
     <!-- 修改 -->
     <update id="updateProjector" parameterType="Projector">
-    	update projector set p_name= #{p_name},p_account= #{p_account},
-    	p_password= #{p_password},p_url= #{p_url},p_interface= #{p_interface},
-    	h_id= #{h_id},status= #{status} where p_id=#{p_id}
+    	update projector set 
+    		p_name= #{p_name},
+    		p_type= #{p_type},
+	    	p_account= #{p_account},
+	    	p_password= #{p_password},
+	    	p_url= #{p_url},
+	    	p_interface= #{p_interface},
+	    	h_id= #{h_id},
+	    	status= #{status}
+    	where p_id=#{p_id}
     </update>
     <!-- 删除 -->
     <delete id="deleteProjectorById" parameterType="java.lang.Integer">
