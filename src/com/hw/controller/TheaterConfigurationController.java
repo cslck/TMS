@@ -49,11 +49,20 @@ public class TheaterConfigurationController {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			List<MovieHall> mh = movieHallService.queryHalls();
+			logger.info("用户：admin,操作：查询影厅配置信息,所有影厅："+mh);
+			if(mh.isEmpty()) {
+				return new AjaxResult(AjaxResult.AUTHENTICATION_ERROR, "未获取影厅信息！");
+			}
 			int ids = mh.get(0).getH_id();
 			Projector pj = projectorService.queryProjectorByHid(ids);
 			MediaBlock mb = mediaBlockService.queryMediaBlockByHid(ids);
 			VideoSurveillance vd = videoService.queryVideoByHid(ids);
 			AudioFrequency af = audioFrequencyService.queryAudioFrequencyByHid(ids);
+			logger.info("用户：admin,操作：查询默认影厅配置信息,影厅四项配置信息："
+			+"放映机信息："+pj
+			+"媒体块信息："+mb
+			+"视频监测信息："+vd
+			+"音频信息："+af);
 			data.put("pj", pj);
 			data.put("mb", mb);
 			data.put("vd", vd);
@@ -68,7 +77,7 @@ public class TheaterConfigurationController {
 		
 	}
 	
-	@RequestMapping("/queryHallInfo")//影厅配置信息
+	@RequestMapping("/queryHallInfo")//该h_id的影厅配置信息
 	@ResponseBody
 	public AjaxResult allCentralStoragesAjax(HttpServletRequest req,Integer h_id) {
 		HashMap<String, Object> data = new HashMap<String, Object>();

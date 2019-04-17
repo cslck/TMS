@@ -83,7 +83,7 @@ public class MovieHallController {
 	@RequestMapping("/dropHall")//删除影厅ID
 	@ResponseBody
 	public String dropMovieHall(HttpServletRequest req,Integer h_id) {
-		logger.info("用户：admin,操作：ID删除影厅信息"+h_id);
+		logger.info("用户：admin,操作：ID删除影厅信息："+h_id);
 		try {
 			movieHallService.deleteHallById(h_id);
 			return "okay";
