@@ -45,7 +45,7 @@ public class TheaterConfigurationController {
 	
 	@RequestMapping("/queryallHalls")//所有影厅
 	@ResponseBody
-	public AjaxResult allMovieHalls(HttpServletRequest req) {
+	public AjaxResult allMovieHallInfos(HttpServletRequest req) {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			List<MovieHall> mh = movieHallService.queryHalls();
@@ -79,7 +79,7 @@ public class TheaterConfigurationController {
 	
 	@RequestMapping("/queryHallInfo")//该h_id的影厅配置信息
 	@ResponseBody
-	public AjaxResult allCentralStoragesAjax(HttpServletRequest req,Integer h_id) {
+	public AjaxResult MovieHallInfoByHid(HttpServletRequest req,Integer h_id) {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
 			Projector pj = projectorService.queryProjectorByHid(h_id);
@@ -90,7 +90,7 @@ public class TheaterConfigurationController {
 			data.put("mb", mb);
 			data.put("vd", vd);
 			data.put("af", af);
-			logger.info("用户：admin,操作：影厅ID查询所有影厅配置信息"+data);
+			logger.info("用户：admin,操作：影厅ID查询该影厅下的配置信息："+data);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
 			// TODO: handle exception
