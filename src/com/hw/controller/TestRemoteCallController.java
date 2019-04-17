@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hw.pojo.AjaxResult;
+import com.hw.pojo.CentralStorage;
 
 import net.sf.json.JSONObject;
 @Controller
@@ -32,14 +33,6 @@ public class TestRemoteCallController {
 			URLConnection urlConnection = realUrl.openConnection();
 			urlConnection.connect();
 			Map<String, List<String>> map = urlConnection.getHeaderFields();
-			System.out.println(map.entrySet());
-			/*for(ProgramLog pLog : map){
-	             JSONObject jo = new JSONObject();
-	             jo.put("id", pLog.getId());
-	             jo.put("time", pLog.getBeginTime());
-	              
-	             data.put("list",jo);
-	         }*/
 			//data.put("list", map);
 		} catch (Exception e) {
 			e.printStackTrace();

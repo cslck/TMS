@@ -84,11 +84,11 @@ public class TheaterConfigurationController {
 		try {
 			Projector pj = projectorService.queryProjectorByHid(h_id);
 			MediaBlock mb = mediaBlockService.queryMediaBlockByHid(h_id);
-			VideoSurveillance video = videoService.queryVideoByHid(h_id);
+			VideoSurveillance vd = videoService.queryVideoByHid(h_id);
 			AudioFrequency af = audioFrequencyService.queryAudioFrequencyByHid(h_id);
 			data.put("pj", pj);
 			data.put("mb", mb);
-			data.put("video", video);
+			data.put("vd", vd);
 			data.put("af", af);
 			logger.info("用户：admin,操作：影厅ID查询所有影厅配置信息"+data);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
