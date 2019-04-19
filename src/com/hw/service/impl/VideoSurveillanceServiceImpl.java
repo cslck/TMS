@@ -15,9 +15,9 @@ public class VideoSurveillanceServiceImpl implements VideoSurveillanceService {
 
 	@Autowired
 	private VideoSurveillanceDao videoDao;
-	public void addMediaBlock(VideoSurveillance video) {
+	public void addVideo(VideoSurveillance video) {
 		// TODO Auto-generated method stub
-		videoDao.insertMediaBlock(video);
+		videoDao.insertVideo(video);
 	}
 
 	public List<VideoSurveillance> queryVideos() {

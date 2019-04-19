@@ -315,7 +315,7 @@ public class TheaterConfigurationController {
 	public AjaxResult addVideo(HttpServletRequest req,VideoSurveillance vi) {
 		logger.info("用户：admin,操作：添加视频信息"+vi);
 		try {
-			videoService.addMediaBlock(vi);
+			videoService.addVideo(vi);
 			return new AjaxResult(AjaxResult.SUCCESS, "success");
 		} catch (Exception e) {
 			// TODO: handle exception

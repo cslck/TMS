@@ -6,7 +6,7 @@ import com.hw.pojo.VideoSurveillance;
 
 public interface VideoSurveillanceService {
 
-	void addMediaBlock(VideoSurveillance video);//添加信息
+	void addVideo(VideoSurveillance video);//添加信息
 	
 	List<VideoSurveillance> queryVideos();//所有信息
 	
