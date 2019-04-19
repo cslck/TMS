@@ -33,7 +33,7 @@ public class MediaBlockServiceImpl implements MediaBlockService {
 
 	public void updateMediaBlock(MediaBlock md) {
 		// TODO Auto-generated method stub
-		mediaBlockDao.updateMediaBlocky(md);
+		mediaBlockDao.updateMediaBlock(md);
 	}
 
 	public void dropMediaBlockById(int id) {

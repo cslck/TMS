@@ -13,7 +13,7 @@ public interface MediaBlockDao {
 	MediaBlock searchMediaBlockById(int id);//id查询
 	MediaBlock searchMediaBlockByHid(int id);//h_id查询
 	
-	void updateMediaBlocky(MediaBlock md);//信息更新
+	void updateMediaBlock(MediaBlock md);//信息更新
 	
 	void deleteMediaBlockById(int id);//id删除
 }
