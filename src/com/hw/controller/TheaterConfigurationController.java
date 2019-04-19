@@ -299,9 +299,9 @@ public class TheaterConfigurationController {
 	public AjaxResult queryVideo(HttpServletRequest req,Integer v_id) {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		try {
-			VideoSurveillance vi = videoService.queryVideoById(v_id);
-			logger.info("用户：admin,操作：ID查询视频监控信息"+vi);
-			data.put("vi", vi);
+			VideoSurveillance vd = videoService.queryVideoById(v_id);
+			logger.info("用户：admin,操作：ID查询视频监控信息"+vd);
+			data.put("vd", vd);
 			return new AjaxResult(AjaxResult.SUCCESS, "success", data);
 		} catch (Exception e) {
 			// TODO: handle exception
